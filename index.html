@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redirecting…</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Q34Z8YTVL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5Q34Z8YTVL', { 'transport_type': 'beacon' });
+  </script>
+
+  <style>
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    body{display:grid;place-items:center;}
+    .card{padding:1.5rem;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);text-align:center;}
+    .muted{color:#6b7280;font-size:.95rem;}
+  </style>
+
+  <!-- Fallback if JavaScript disabled -->
+  <noscript>
+    <meta http-equiv="refresh" content="1.5;url=https://drive.google.com/file/d/17W_hdzW6bisxdPn68MviIj5yiEwqI_YH/view?usp=drivesdk">
+  </noscript>
+</head>
+<body>
+  <div class="card">
+    <h1>Redirecting…</h1>
+    <p class="muted">If this page doesn’t close automatically, <a id="a" href="#">click here</a>.</p>
+  </div>
+
+  <script>
+    const DESTINATION_URL = "https://drive.google.com/file/d/17W_hdzW6bisxdPn68MviIj5yiEwqI_YH/view?usp=drivesdk";
+    const UTM = new URLSearchParams({
+      utm_source: "github-pages",
+      utm_medium: "redirect",
+      utm_campaign: "drive-share"
+    }).toString();
+
+    const finalUrl = DESTINATION_URL + (DESTINATION_URL.includes("?") ? "&" : "?") + UTM;
+    document.getElementById("a").href = finalUrl;
+
+    // Send redirect event to GA4, then go
+    function go(){ window.location.replace(finalUrl); }
+
+    gtag('event', 'redirect', {
+      event_category: 'engagement',
+      event_label: finalUrl,
+      non_interaction: true,
+      transport_type: 'beacon',
+      event_callback: go
+    });
+
+    // fallback in case beacon blocked
+    setTimeout(go, 800);
+  </script>
+</body>
+</html>
